@@ -5,8 +5,8 @@
         static void Main(string[] args)
         {
             Player player = new('@', 5, 5);
-            Console.SetCursorPosition(player.PositionX, player.PositionY);
-            Console.Write(player.Symbol);
+            Renderer renderer = new();
+            renderer.DrawPlayer(player);
             Console.ReadKey();
         }
     }
@@ -25,5 +25,19 @@
         public int PositionX { get; private set; }
 
         public int PositionY { get; private set; }
+    }
+
+    public class Renderer
+    {
+        public void DrawPlayer(Player player)
+        {
+            Console.Clear();
+
+            if (player.PositionX >= 0 && player.PositionY >= 0)
+            {
+                Console.SetCursorPosition(player.PositionX, player.PositionY);
+                Console.Write(player.Symbol);
+            }
+        }
     }
 }
